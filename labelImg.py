@@ -47,6 +47,8 @@ from libs.ustr import ustr
 from libs.version import __version__
 from libs.hashableQListWidgetItem import HashableQListWidgetItem
 
+from libs.newWidget import NewWidget
+
 __appname__ = 'labelImg'
 
 class WindowMixin(object):
@@ -190,6 +192,12 @@ class MainWindow(QMainWindow, WindowMixin):
         self.addDockWidget(Qt.RightDockWidgetArea, self.dock)
         self.addDockWidget(Qt.RightDockWidgetArea, self.filedock)
         self.filedock.setFeatures(QDockWidget.DockWidgetFloatable)
+
+
+        self.newwidget = NewWidget()
+        self.addDockWidget(Qt.RightDockWidgetArea, self.newwidget)
+        self.newwidget.setFeatures(QDockWidget.DockWidgetFloatable)
+
 
         self.dockFeatures = QDockWidget.DockWidgetClosable | QDockWidget.DockWidgetFloatable
         self.dock.setFeatures(self.dock.features() ^ self.dockFeatures)
