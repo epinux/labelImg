@@ -47,7 +47,8 @@ from libs.ustr import ustr
 from libs.version import __version__
 from libs.hashableQListWidgetItem import HashableQListWidgetItem
 
-from libs.newWidget import NewWidget
+#from libs.newWidget import NewWidget
+from libs.imagemetadata import ImageMetadata
 
 __appname__ = 'labelImg'
 
@@ -162,9 +163,12 @@ class MainWindow(QMainWindow, WindowMixin):
         filelistLayout.addWidget(self.fileListWidget)
         fileListContainer = QWidget()
         fileListContainer.setLayout(filelistLayout)
+        self.imagemetadata = ImageMetadata()
         self.filedock = QDockWidget(getStr('fileList'), self)
         self.filedock.setObjectName(getStr('files'))
-        self.filedock.setWidget(fileListContainer)
+        #self.filedock.setWidget(fileListContainer)
+        self.filedock.setWidget(self.imagemetadata)
+
 
         self.zoomWidget = ZoomWidget()
         self.colorDialog = ColorDialog(parent=self)
@@ -194,9 +198,9 @@ class MainWindow(QMainWindow, WindowMixin):
         self.filedock.setFeatures(QDockWidget.DockWidgetFloatable)
 
 
-        self.newwidget = NewWidget()
-        self.addDockWidget(Qt.RightDockWidgetArea, self.newwidget)
-        self.newwidget.setFeatures(QDockWidget.DockWidgetFloatable)
+        #self.newwidget = NewWidget()
+        #self.addDockWidget(Qt.RightDockWidgetArea, self.newwidget)
+        #self.newwidget.setFeatures(QDockWidget.DockWidgetFloatable)
 
 
         self.dockFeatures = QDockWidget.DockWidgetClosable | QDockWidget.DockWidgetFloatable

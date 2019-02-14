@@ -16,19 +16,22 @@ except ImportError:
     from PyQt4.QtGui import *
     from PyQt4.QtCore import *
 
+from libs.imagemetadata import ImageMetadata
 
 
 class NewWidget(QDockWidget):
     newSignal = pyqtSignal(int)
 
+
     def __init__(self, *args, **kwargs):
         super(NewWidget, self).__init__(*args, **kwargs)
-        self.items = []
-        self.fileListWidget = QListWidget()
-        self.fileListWidget.itemDoubleClicked.connect(self.itemDoubleClicked)
+        #self.items = []
+        #self.fileListWidget = QListWidget()
+        self.imagemetadata = ImageMetadata()
+        #self.fileListWidget.itemDoubleClicked.connect(self.itemDoubleClicked)
         filelistLayout = QVBoxLayout()
-        filelistLayout.setContentsMargins(0, 0, 0, 0)
-        filelistLayout.addWidget(self.fileListWidget)
+        #filelistLayout.setContentsMargins(0, 0, 0, 0)
+        filelistLayout.addWidget(self.imagemetadata)
         fileListContainer = QWidget()
         fileListContainer.setLayout(filelistLayout)
         self.filedock = QDockWidget('NewWidget', self)
